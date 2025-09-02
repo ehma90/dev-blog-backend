@@ -34,6 +34,9 @@ Authorization: {{token}}
 
 {
   "title": "Getting Started with NestJS",
+  "authorName": "Alice Johnson",
+  "excerpt": "A comprehensive introduction to NestJS, the progressive Node.js framework for building efficient server-side applications.",
+  "tags": ["nestjs", "nodejs", "typescript", "backend"],
   "content": "NestJS is a progressive Node.js framework for building efficient and scalable server-side applications. It uses modern JavaScript, is built with TypeScript and combines elements of OOP, FP, and FRP."
 }
 
@@ -44,6 +47,9 @@ Authorization: {{token}}
 
 {
   "title": "Building RESTful APIs with NestJS",
+  "authorName": "Alice Johnson",
+  "excerpt": "Learn how to build robust RESTful APIs using NestJS with controllers, services, middleware, and best practices.",
+  "tags": ["nestjs", "api", "rest", "backend", "tutorial"],
   "content": "In this comprehensive guide, we'll explore how to build robust RESTful APIs using NestJS. We'll cover controllers, services, middleware, and best practices for API design."
 }
 
@@ -61,6 +67,9 @@ Authorization: {{token}}
 
 {
   "title": "Updated: Getting Started with NestJS",
+  "authorName": "Alice Johnson",
+  "excerpt": "Updated comprehensive introduction to NestJS with additional information and examples.",
+  "tags": ["nestjs", "nodejs", "typescript", "backend", "updated"],
   "content": "NestJS is a progressive Node.js framework for building efficient and scalable server-side applications. It uses modern JavaScript, is built with TypeScript and combines elements of OOP, FP, and FRP. This post has been updated with additional information."
 }
 

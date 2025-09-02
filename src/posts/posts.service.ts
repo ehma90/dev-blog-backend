@@ -17,11 +17,14 @@ export class PostsService {
   }
 
   async findAll(): Promise<Post[]> {
-    return this.postModel.find().populate('authorId', 'username').exec();
+    return this.postModel.find().populate('authorId', 'fullName email').exec();
   }
 
   async findOne(id: string): Promise<Post | null> {
-    return this.postModel.findById(id).populate('authorId', 'username').exec();
+    return this.postModel
+      .findById(id)
+      .populate('authorId', 'fullName email')
+      .exec();
   }
 
   async update(
@@ -46,7 +49,7 @@ export class PostsService {
   async findByAuthor(authorId: string): Promise<Post[]> {
     return this.postModel
       .find({ authorId })
-      .populate('authorId', 'username')
+      .populate('authorId', 'fullName email')
       .exec();
   }
 }

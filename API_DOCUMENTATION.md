@@ -98,10 +98,14 @@ Get all blog posts.
   {
     "_id": "string",
     "title": "string",
+    "authorName": "string",
+    "excerpt": "string",
+    "tags": ["string"],
     "content": "string",
     "authorId": {
       "_id": "string",
-      "username": "string"
+      "fullName": "string",
+      "email": "string"
     },
     "createdAt": "string",
     "updatedAt": "string"
@@ -119,10 +123,14 @@ Get a specific blog post by ID.
 {
   "_id": "string",
   "title": "string",
+  "authorName": "string",
+  "excerpt": "string",
+  "tags": ["string"],
   "content": "string",
   "authorId": {
     "_id": "string",
-    "username": "string"
+    "fullName": "string",
+    "email": "string"
   },
   "createdAt": "string",
   "updatedAt": "string"
@@ -154,6 +162,9 @@ Authorization: Bearer <jwt_token>
 ```json
 {
   "title": "string",
+  "authorName": "string",
+  "excerpt": "string",
+  "tags": ["string"],
   "content": "string"
 }
 ```
@@ -173,6 +184,9 @@ Authorization: Bearer <jwt_token>
 ```json
 {
   "title": "string",
+  "authorName": "string",
+  "excerpt": "string",
+  "tags": ["string"],
   "content": "string"
 }
 ```
@@ -234,6 +248,9 @@ The API returns standard HTTP status codes and error messages:
 {
   _id: ObjectId,
   title: string,
+  authorName: string,
+  excerpt: string,
+  tags: string[],
   content: string,
   authorId: ObjectId (reference to User),
   createdAt: Date,

@@ -2,7 +2,7 @@
 
 @baseUrl = http://localhost:3000
 @contentType = application/json
-@token = Bearer YOUR_JWT_TOKEN_HERE
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwic3ViIjoiNjhiNzIxMzQ0NzNjMTk0YzI4MjkwMjVjIiwiaWF0IjoxNzU2ODMyMDUyLCJleHAiOjE3NTY5MTg0NTJ9.SjMeKhumBoK2giHXYx8USfubvmJrciEI8nq9TP2aRLM
 
 ### Get all posts (public)
 GET {{baseUrl}}/posts
@@ -17,6 +17,9 @@ Authorization: {{token}}
 
 {
   "title": "My First Blog Post",
+  "authorName": "John Doe",
+  "excerpt": "A comprehensive guide to getting started with web development and programming.",
+  "tags": ["web-development", "programming", "tutorial"],
   "content": "This is the content of my first blog post. It contains some interesting information about web development and programming."
 }
 
@@ -27,6 +30,9 @@ Authorization: {{token}}
 
 {
   "title": "Advanced NestJS Techniques",
+  "authorName": "Jane Smith",
+  "excerpt": "Learn advanced NestJS techniques including custom decorators, guards, and interceptors for building scalable applications.",
+  "tags": ["nestjs", "nodejs", "backend", "advanced"],
   "content": "In this post, I'll explore advanced techniques for building scalable applications with NestJS, including custom decorators, guards, and interceptors."
 }
 
@@ -35,17 +41,20 @@ GET {{baseUrl}}/posts/my-posts
 Authorization: {{token}}
 
 ### Update a post (requires authentication - author only)
-PATCH {{baseUrl}}/posts/POST_ID_HERE
+PATCH {{baseUrl}}/posts/68b72431473c194c28290262
 Content-Type: {{contentType}}
 Authorization: {{token}}
 
 {
   "title": "Updated Blog Post Title",
+  "authorName": "John Doe",
+  "excerpt": "Updated excerpt for the blog post.",
+  "tags": ["updated", "web-development", "programming"],
   "content": "This is the updated content of the blog post."
 }
 
 ### Update only the title
-PATCH {{baseUrl}}/posts/POST_ID_HERE
+PATCH {{baseUrl}}/posts/68b72431473c194c28290262
 Content-Type: {{contentType}}
 Authorization: {{token}}
 
@@ -54,7 +63,7 @@ Authorization: {{token}}
 }
 
 ### Update only the content
-PATCH {{baseUrl}}/posts/POST_ID_HERE
+PATCH {{baseUrl}}/posts/68b72431473c194c28290262
 Content-Type: {{contentType}}
 Authorization: {{token}}
 
@@ -63,7 +72,7 @@ Authorization: {{token}}
 }
 
 ### Delete a post (requires authentication - author only)
-DELETE {{baseUrl}}/posts/POST_ID_HERE
+DELETE {{baseUrl}}/posts/68b72431473c194c28290262
 Authorization: {{token}}
 
 ### Try to create a post without authentication
@@ -72,6 +81,9 @@ Content-Type: {{contentType}}
 
 {
   "title": "Unauthorized Post",
+  "authorName": "Anonymous",
+  "excerpt": "This should fail because no token is provided.",
+  "tags": ["test"],
   "content": "This should fail because no token is provided."
 }
 
@@ -79,7 +91,7 @@ Content-Type: {{contentType}}
 GET {{baseUrl}}/posts/my-posts
 
 ### Try to update a post without authentication
-PATCH {{baseUrl}}/posts/POST_ID_HERE
+PATCH {{baseUrl}}/posts/68b72431473c194c28290262
 Content-Type: {{contentType}}
 
 {
@@ -87,4 +99,4 @@ Content-Type: {{contentType}}
 }
 
 ### Try to delete a post without authentication
-DELETE {{baseUrl}}/posts/POST_ID_HERE
+DELETE {{baseUrl}}/posts/68b72431473c194c28290262

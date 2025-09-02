@@ -1,0 +1,75 @@
+### Dev-Blog API Tests - Complete Flow Example
+
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+### Step 1: Register a new user
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "fullName": "Alice Johnson",
+  "email": "alice.johnson@example.com",
+  "password": "securepassword123"
+}
+
+### Step 2: Login with the registered user
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "alice.johnson@example.com",
+  "password": "securepassword123"
+}
+
+### Step 3: Copy the access_token from the login response and use it below
+### Replace YOUR_TOKEN_HERE with the actual token from the login response
+
+@token = Bearer YOUR_TOKEN_HERE
+
+### Step 4: Create a blog post
+POST {{baseUrl}}/posts
+Content-Type: {{contentType}}
+Authorization: {{token}}
+
+{
+  "title": "Getting Started with NestJS",
+  "content": "NestJS is a progressive Node.js framework for building efficient and scalable server-side applications. It uses modern JavaScript, is built with TypeScript and combines elements of OOP, FP, and FRP."
+}
+
+### Step 5: Create another blog post
+POST {{baseUrl}}/posts
+Content-Type: {{contentType}}
+Authorization: {{token}}
+
+{
+  "title": "Building RESTful APIs with NestJS",
+  "content": "In this comprehensive guide, we'll explore how to build robust RESTful APIs using NestJS. We'll cover controllers, services, middleware, and best practices for API design."
+}
+
+### Step 6: Get all posts (including yours)
+GET {{baseUrl}}/posts
+
+### Step 7: Get only your posts
+GET {{baseUrl}}/posts/my-posts
+Authorization: {{token}}
+
+### Step 8: Update one of your posts (replace POST_ID with actual ID from step 6)
+PATCH {{baseUrl}}/posts/POST_ID_HERE
+Content-Type: {{contentType}}
+Authorization: {{token}}
+
+{
+  "title": "Updated: Getting Started with NestJS",
+  "content": "NestJS is a progressive Node.js framework for building efficient and scalable server-side applications. It uses modern JavaScript, is built with TypeScript and combines elements of OOP, FP, and FRP. This post has been updated with additional information."
+}
+
+### Step 9: Get the updated post
+GET {{baseUrl}}/posts/POST_ID_HERE
+
+### Step 10: Delete a post (replace POST_ID with actual ID)
+DELETE {{baseUrl}}/posts/POST_ID_HERE
+Authorization: {{token}}
+
+### Step 11: Verify the post was deleted
+GET {{baseUrl}}/posts

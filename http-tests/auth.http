@@ -1,0 +1,92 @@
+### Dev-Blog API Tests - Authentication
+
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+### Register a new user
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "fullName": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "password123"
+}
+
+### Register another user
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "fullName": "Jane Smith",
+  "email": "jane.smith@example.com",
+  "password": "password456"
+}
+
+### Login with valid credentials
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "john.doe@example.com",
+  "password": "password123"
+}
+
+### Login with invalid email
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "invalid@example.com",
+  "password": "password123"
+}
+
+### Login with invalid password
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "john.doe@example.com",
+  "password": "wrongpassword"
+}
+
+### Register with invalid email format
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "fullName": "Invalid User",
+  "email": "invalid-email",
+  "password": "password123"
+}
+
+### Register with existing email
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "fullName": "Another User",
+  "email": "john.doe@example.com",
+  "password": "password789"
+}
+
+### Register with invalid email format
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "fullName": "Invalid User",
+  "email": "invalid-email",
+  "password": "password123",
+  "confirmPassword": "password123"
+}
+
+### Register with short password
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "fullName": "Short Password User",
+  "email": "short@example.com",
+  "password": "123"
+}

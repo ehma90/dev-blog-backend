@@ -1,0 +1,90 @@
+### Dev-Blog API Tests - Posts
+
+@baseUrl = http://localhost:3000
+@contentType = application/json
+@token = Bearer YOUR_JWT_TOKEN_HERE
+
+### Get all posts (public)
+GET {{baseUrl}}/posts
+
+### Get a specific post by ID (public)
+GET {{baseUrl}}/posts/POST_ID_HERE
+
+### Create a new post (requires authentication)
+POST {{baseUrl}}/posts
+Content-Type: {{contentType}}
+Authorization: {{token}}
+
+{
+  "title": "My First Blog Post",
+  "content": "This is the content of my first blog post. It contains some interesting information about web development and programming."
+}
+
+### Create another post
+POST {{baseUrl}}/posts
+Content-Type: {{contentType}}
+Authorization: {{token}}
+
+{
+  "title": "Advanced NestJS Techniques",
+  "content": "In this post, I'll explore advanced techniques for building scalable applications with NestJS, including custom decorators, guards, and interceptors."
+}
+
+### Get my posts (requires authentication)
+GET {{baseUrl}}/posts/my-posts
+Authorization: {{token}}
+
+### Update a post (requires authentication - author only)
+PATCH {{baseUrl}}/posts/POST_ID_HERE
+Content-Type: {{contentType}}
+Authorization: {{token}}
+
+{
+  "title": "Updated Blog Post Title",
+  "content": "This is the updated content of the blog post."
+}
+
+### Update only the title
+PATCH {{baseUrl}}/posts/POST_ID_HERE
+Content-Type: {{contentType}}
+Authorization: {{token}}
+
+{
+  "title": "New Title Only"
+}
+
+### Update only the content
+PATCH {{baseUrl}}/posts/POST_ID_HERE
+Content-Type: {{contentType}}
+Authorization: {{token}}
+
+{
+  "content": "This is the new content for the blog post."
+}
+
+### Delete a post (requires authentication - author only)
+DELETE {{baseUrl}}/posts/POST_ID_HERE
+Authorization: {{token}}
+
+### Try to create a post without authentication
+POST {{baseUrl}}/posts
+Content-Type: {{contentType}}
+
+{
+  "title": "Unauthorized Post",
+  "content": "This should fail because no token is provided."
+}
+
+### Try to get my posts without authentication
+GET {{baseUrl}}/posts/my-posts
+
+### Try to update a post without authentication
+PATCH {{baseUrl}}/posts/POST_ID_HERE
+Content-Type: {{contentType}}
+
+{
+  "title": "Unauthorized Update"
+}
+
+### Try to delete a post without authentication
+DELETE {{baseUrl}}/posts/POST_ID_HERE

@@ -11,6 +11,15 @@ export class Post {
   title: string;
 
   @Prop({ required: true })
+  authorName: string;
+
+  @Prop({ required: true })
+  excerpt: string;
+
+  @Prop({ type: [String], default: [] })
+  tags: string[];
+
+  @Prop({ required: true })
   content: string;
 
   @Prop({ type: Types.ObjectId, ref: 'User', required: true })

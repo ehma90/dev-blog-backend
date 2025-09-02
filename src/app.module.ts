@@ -13,7 +13,7 @@ import { PostsModule } from './posts/posts.module';
       isGlobal: true,
     }),
     MongooseModule.forRoot(
-      process.env.MONGODB_URI || 'mongodb://localhost:27017/dev-blog',
+      process.env.MONGODB_URI || '',
     ),
     AuthModule,
     UsersModule,

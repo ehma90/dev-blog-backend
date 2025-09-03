@@ -1,6 +1,6 @@
 ### Dev-Blog API Tests - Posts
 
-@baseUrl = http://localhost:3000
+@baseUrl = http://localhost:4000
 @contentType = application/json
 @token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwic3ViIjoiNjhiNzIxMzQ0NzNjMTk0YzI4MjkwMjVjIiwiaWF0IjoxNzU2ODMyMDUyLCJleHAiOjE3NTY5MTg0NTJ9.SjMeKhumBoK2giHXYx8USfubvmJrciEI8nq9TP2aRLM
 

@@ -25,7 +25,7 @@ This is a NestJS backend API for a blog application with user authentication and
 ```env
 MONGODB_URI=mongodb://localhost:27017/dev-blog
 JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-PORT=3000
+PORT=4000
 ```
 
 ## API Endpoints
@@ -82,6 +82,67 @@ Login with existing credentials.
     "fullName": "string",
     "email": "string"
   }
+}
+```
+
+#### GET /auth/me
+
+Get current user information. **Requires Authentication**
+
+**Headers:**
+
+```
+Authorization: Bearer <jwt_token>
+```
+
+**Response:**
+
+```json
+{
+  "id": "string",
+  "fullName": "string",
+  "email": "string"
+}
+```
+
+#### POST /auth/refresh
+
+Refresh the JWT token. **Requires Authentication**
+
+**Headers:**
+
+```
+Authorization: Bearer <jwt_token>
+```
+
+**Response:**
+
+```json
+{
+  "access_token": "string",
+  "user": {
+    "id": "string",
+    "fullName": "string",
+    "email": "string"
+  }
+}
+```
+
+#### POST /auth/logout
+
+Logout the current user. **Requires Authentication**
+
+**Headers:**
+
+```
+Authorization: Bearer <jwt_token>
+```
+
+**Response:**
+
+```json
+{
+  "message": "Logged out successfully"
 }
 ```
 

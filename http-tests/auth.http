@@ -1,6 +1,6 @@
 ### Dev-Blog API Tests - Authentication
 
-@baseUrl = http://localhost:3000
+@baseUrl = http://localhost:4000
 @contentType = application/json
 
 ### Register a new user
@@ -90,3 +90,24 @@ Content-Type: {{contentType}}
   "email": "short@example.com",
   "password": "123"
 }
+
+### Get current user info (requires authentication)
+GET {{baseUrl}}/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZGVAZXhhbXBsZS5jb20iLCJzdWIiOiI2OGI3NDkwMjgxNTRmYTdlMDI1ZmQ5NzEiLCJpYXQiOjE3NTY4NDIyNDIsImV4cCI6MTc1NjkyODY0Mn0.Z0HxVRsG-fYmWRB2vjM8r13TV3zDjyES9e6hPCnLluY
+
+### Refresh token (requires authentication)
+POST {{baseUrl}}/auth/refresh
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Logout (requires authentication)
+POST {{baseUrl}}/auth/logout
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Try to get current user without authentication
+GET {{baseUrl}}/auth/me
+
+### Try to refresh token without authentication
+POST {{baseUrl}}/auth/refresh
+
+### Try to logout without authentication
+POST {{baseUrl}}/auth/logout

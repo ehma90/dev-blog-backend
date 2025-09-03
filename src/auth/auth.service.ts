@@ -62,4 +62,39 @@ export class AuthService {
       },
     };
   }
+
+  async getCurrentUser(userId: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    return {
+      id: user._id,
+      fullName: user.fullName,
+      email: user.email,
+    };
+  }
+
+  async refreshToken(userId: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    const payload = { email: user.email, sub: user._id };
+
+    return {
+      access_token: this.jwtService.sign(payload),
+      user: {
+        id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+      },
+    };
+  }
+
+  async logout() {
+    return { message: 'Logged out successfully' };
+  }
 }

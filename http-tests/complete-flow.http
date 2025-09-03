@@ -1,6 +1,6 @@
 ### Dev-Blog API Tests - Complete Flow Example
 
-@baseUrl = http://localhost:3000
+@baseUrl = http://localhost:4000
 @contentType = application/json
 
 ### Step 1: Register a new user
@@ -21,6 +21,10 @@ Content-Type: {{contentType}}
   "email": "alice.johnson@example.com",
   "password": "securepassword123"
 }
+
+### Step 2.5: Get current user info
+GET {{baseUrl}}/auth/me
+Authorization: {{token}}
 
 ### Step 3: Copy the access_token from the login response and use it below
 ### Replace YOUR_TOKEN_HERE with the actual token from the login response
@@ -82,3 +86,11 @@ Authorization: {{token}}
 
 ### Step 11: Verify the post was deleted
 GET {{baseUrl}}/posts
+
+### Step 12: Refresh token
+POST {{baseUrl}}/auth/refresh
+Authorization: {{token}}
+
+### Step 13: Logout
+POST {{baseUrl}}/auth/logout
+Authorization: {{token}}
